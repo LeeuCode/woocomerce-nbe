@@ -23,7 +23,7 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
 $resp = curl_exec($curl);
 curl_close($curl);
-var_dump($resp);
+// var_dump($resp);
 ?>
 <script defer src="https://test-nbe.gateway.mastercard.com/checkout/version/57/checkout.js"
         data-error="errorCallback"

@@ -4,6 +4,8 @@ class WC_NBE extends WC_Payment_Gateway
 {
     public function __construct()
     {
+        $this->order_button_text = __( 'Proceed to NBE', 'woocommerce' );
+        $this->method_title      = __( 'PayPal Standard', 'woocommerce' );
         /*==== Setup properties ====*/
         $this->setup_properties();
 

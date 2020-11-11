@@ -44,3 +44,10 @@ function wc_nbe_add_to_gateways( $gateways ) {
     return $gateways;
 }
 add_filter( 'woocommerce_payment_gateways', 'wc_nbe_add_to_gateways' );
+
+
+
+function Zumper_widget_enqueue_script() {   
+    wp_enqueue_script( 'my_custom_script', 'https://test-nbe.gateway.mastercard.com/checkout/version/57/checkout.js' );
+}
+add_action('wp_enqueue_scripts', 'Zumper_widget_enqueue_script');

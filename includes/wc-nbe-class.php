@@ -25,7 +25,7 @@ class WC_NBE extends WC_Payment_Gateway
     protected function setup_properties()
     {
         $this->id = 'nbe';
-        $this->icon = apply_filters( 'wc_nbe_icon', plugins_url( '../assets/imgs/NBE-logo.svg', __FILE__ ));
+        $this->icon = apply_filters( 'wc_nbe_icon', plugins_url( '../assets/imgs/Ahly Shopping LOGO.PNG', __FILE__ ));
         $this->method_title = __('National Bank of Egypt', 'lc');
         $this->method_description = __('The woocommerce payment gateway for the National Bank of Egypt', 'lc');
         $this->init_form_fields();

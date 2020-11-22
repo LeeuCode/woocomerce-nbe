@@ -20,6 +20,26 @@ $this->form_fields = apply_filters( 'wc_nbe_form_fields', array(
         'description' => __('This controls the description which the user sees during checkout.', 'lc'),
         'default'     => __('Pay with your credit card via our super-cool payment gateway.', 'lc'),
     ),
+    'url' => array(
+        'title'       => 'URL',
+        'type'        => 'text',
+    ),
+    'merchant_name' => array(
+        'title'       => 'Merchant Name',
+        'type'        => 'text',
+    ),
+    'merchant_id' => array(
+        'title'       => 'Merchant ID',
+        'type'        => 'text',
+    ),
+    'api_username' => array(
+        'title'       => 'API username',
+        'type'        => 'text',
+    ),
+    'api_password' => array(
+        'title'       => 'API Password',
+        'type'        => 'password',
+    ),
     'testmode' => array(
         'title'       => 'Test mode',
         'label'       => 'Enable Test Mode',

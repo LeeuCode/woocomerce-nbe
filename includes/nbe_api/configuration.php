@@ -52,16 +52,16 @@ $configArray["certificateVerifyHost"] = 2;
 
 
 // Base URL of the Payment Gateway. Do not include the version.
-$configArray["gatewayUrl"] = "https://test-nbe.gateway.mastercard.com/api/rest";
+$configArray["gatewayUrl"] = $this->get_option('url'); //"https://test-nbe.gateway.mastercard.com/api/rest";
 
 // Merchant ID supplied by your payments provider
-$configArray["merchantId"] = "EGPTEST1";
+$configArray["merchantId"] = $this->get_option('merchant_id');//"EGPTEST1";
 
 // API username in the format below where Merchant ID is the same as above
-$configArray["apiUsername"] = "merchant.EGPTEST1";
+$configArray["apiUsername"] = $this->get_option('api_username'); //"merchant.EGPTEST1";
 
 // API password which can be configured in Merchant Administration
-$configArray["password"] = "61422445f6c0f954e24c7bd8216ceedf";
+$configArray["password"] = $this->get_option('api_password'); //"61422445f6c0f954e24c7bd8216ceedf";
 
 
 // The debug setting controls displaying the raw content of the request and 

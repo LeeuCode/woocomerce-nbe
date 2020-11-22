@@ -24,7 +24,7 @@ if (array_key_exists("method", $_POST))
 // In your integration, you should never pass these in, but set the values here based on your requirements
 $customUri = "";
 // if (array_key_exists("orderId", $_POST))
-$customUri .= "/order/" . 1121;//$order->id;//$_POST["orderId"];
+$customUri .= "/order/" . ($order->id);//$_POST["orderId"];
 
 // if (array_key_exists("transactionId", $_POST))
 $customUri .= "/transaction/" . uniqid();//$_POST["transactionId"];
@@ -83,9 +83,6 @@ $tt = [
 ];
 
 $request = json_encode($tt);
-// var_dump($request);
-
-// $request = '{"apiOperation":"PAY","sourceOfFunds":{"type":"CARD","provided":{"card":{"number":"'.$_POST['card_number'].'","expiry":{"month":"05","year":"23"},"securityCode":"100"}}},"order":{"amount":"100","currency":"EGP"}}';
 
 // if no post received from HTML page (parseRequest returns "" upon receiving an empty $_POST)
 // if ($request == "")
@@ -105,8 +102,6 @@ $requestUrl = $parserObj->FormRequestUrl($merchantObj, $customUri);
 if ($merchantObj->GetDebug())
   echo $requestUrl . "<br/><br/>";
 
-
-
 // attempt sending of transaction
 // $response is used in receipt page, do not change variable name
 $response = $parserObj->SendTransaction($merchantObj, $request, $method);
@@ -121,7 +116,7 @@ if ($merchantObj->GetDebug()) {
 }
 
 $responseArray = json_decode($response, TRUE);
-var_dump($responseArray);
+// var_dump($responseArray);
 
 // die();
 

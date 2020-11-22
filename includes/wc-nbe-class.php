@@ -129,6 +129,7 @@ class WC_NBE extends WC_Payment_Gateway
 		}
 
         if ($orderStauts == true) {
+
             // Remove cart.
             WC()->cart->empty_cart();
     
@@ -136,15 +137,22 @@ class WC_NBE extends WC_Payment_Gateway
             return array(
                 'result'   => 'success',
                 'redirect' => $this->get_return_url( $order ),
-            );  
+            ); 
         }
     }
     
     public function nbe_process_payment($order)
     {
         require plugin_dir_path(__FILE__).'/nbe_api/process.php';
-        
-        return false;
+
+        if($responseArray['result'] == "ERROR") {
+            $erExplanation = $responseArray['error']['explanation'];
+            $erCause = $responseArray['error']['cause'];
+            wc_add_notice('<strong>'. $erCause .' </strong>'. $erExplanation, 'error' );
+            return false;
+        } else {
+            return true;
+        }  
     }
 
     /*==== Output for the order received page ====*/

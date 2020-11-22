@@ -1,85 +1,45 @@
+<?php 
 
-
-<?php
-$url = "https://test-nbe.gateway.mastercard.com/api/rest/version/57/merchant/EGPTEST1/session";
-$username = 'merchant.EGPTEST1';
-$password = '61422445f6c0f954e24c7bd8216ceedf';
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-// $headers = array(
-//    "Authorization: Basic merchant.EGPTEST1:61422445f6c0f954e24c7bd8216ceedf",
-//    "Content-Type: application/json",
-//    "Content-Length: 0",
+// woocommerce_form_field(
+//     'card_number',
+//     array(
+//         'type' => 'text',
+//         'label' => __('Card Number', 'lc'),
+//         'class' => array('form-row-wide', 'form-row'),
+//         'required' =>true
+//     )
 // );
-curl_setopt($curl, CURLOPT_USERPWD, $username . ":" . $password);
-// curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-//for debug only!
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-$resp = curl_exec($curl);
-curl_close($curl);
-$result = json_decode($resp);
-// var_dump($result->session->id);
-?>
-<script defer src="https://test-nbe.gateway.mastercard.com/checkout/version/57/checkout.js"
-        data-error="?errorCallback"
-        data-complete="?result=completeCallbackElnady"
-        data-cancel="?result=cancelCallbackElnady">
-</script>
-<script async>
-    // window.addEventListener("DOMContentLoaded", function(){
-    // Your code
-    setTimeout(function() {
-        document.getElementById('showLightbox').addEventListener('click', function() {
-            var test = Checkout.showLightbox();
-            console.log(test);
-        });
-        document.getElementsByName("checkout")[0].addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('yes');
-            return false;
-        });
-        function errorCallback(error) {
-            console.log(JSON.stringify(error));
-        }
-        function cancelCallback() {
-            console.log('Payment cancelled');
-        }
-        Checkout.configure( {
-            merchant: 'EGPTEST1',
-            order: {
-                amount: '<?php echo WC()->cart->total; ?>',
-                currency: '<?php echo get_option('woocommerce_currency'); ?>',
-                description: 'Ordered goods',
-                id: '<?php echo $order_id; ?>'
-            },
-            session:{
-                id: '<?php echo $result->session->id; ?>'
-            },
-            interaction: {
-                operation: 'PURCHASE',
-                merchant: {
-                    name: 'NBE Test',
-                    address: {
-                        line1: '200 Sample St',
-                        line2: '1234 Example Town'
-                    }
-                }
-            }
-        });
-    }, 500)
-    // });
-</script>
-...
-<input id="showLightbox" type="button" value="Pay with Lightbox" />
-<input type="button" value="Pay with Payment Page" onclick="Checkout.showPaymentPage();" data-error="errorCallback"
-        data-complete="?result=completeCallbackElnady"
-        data-cancel="?result=cancelCallbackElnady" />
-...
+// woocommerce_form_field(
+//     'month',
+//     array(
+//         'type' => 'number',
+//         'label' => __('Month', 'lc'),
+//         'class' => array('form-row-wide', 'form-row'),
+//         'required' =>true
+//     )
+// );
 
+// // I will echo() the form, but you can close PHP tags and print it directly in HTML
+// echo '<fieldset id="wc-' . esc_attr( $this->id ) . '-cc-form" class="wc-credit-card-form wc-payment-form" style="background:transparent;">';
+ 
+// // Add this action hook if you want your custom payment gateway to support it
+// do_action( 'woocommerce_credit_card_form_start', $this->id );
 
+// // I recommend to use inique IDs, because other gateways could already use #ccNo, #expdate, #cvc
+// echo '<div class="form-row form-row-wide"><label>Card Number <span class="required">*</span></label>
+//     <input id="misha_ccNo" type="text" autocomplete="off">
+//     </div>
+//     <div class="form-row form-row-first">
+//         <label>Expiry Date <span class="required">*</span></label>
+//         <input id="misha_expdate" type="text" autocomplete="off" placeholder="MM / YY">
+//     </div>
+//     <div class="form-row form-row-last">
+//         <label>Card Code (CVC) <span class="required">*</span></label>
+//         <input id="misha_cvv" type="password" autocomplete="off" placeholder="CVC">
+//     </div>
+//     <div class="clear"></div>';
+
+// do_action( 'woocommerce_credit_card_form_end', $this->id );
+
+// echo '<div class="clear"></div></fieldset>';

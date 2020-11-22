@@ -35,7 +35,7 @@ function wc_nbe_gateway_init() {
 
     if (class_exists('WC_Payment_Gateway')) {
         require 'includes/wc-nbe-class.php';
-        require 'includes/wc-nbe-checkout-descraption-fields.php';
+        // require 'includes/wc-nbe-checkout-descraption-fields.php';
     } //end if
 } // end wc_nbe_gateway_init()
 
@@ -44,8 +44,3 @@ function wc_nbe_add_to_gateways( $gateways ) {
     return $gateways;
 }
 add_filter( 'woocommerce_payment_gateways', 'wc_nbe_add_to_gateways' );
-
-// function Zumper_widget_enqueue_script() {   
-//     wp_enqueue_script( 'nbe', 'https://test-nbe.gateway.mastercard.com/checkout/version/57/checkout.js' );
-// }
-// add_action('wp_enqueue_scripts', 'Zumper_widget_enqueue_script');
